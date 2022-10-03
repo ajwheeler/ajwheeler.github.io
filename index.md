@@ -4,8 +4,7 @@ title: Adam Wheeler
 ---
 ## Adam J. Wheeler
 
-I'm an NSF graduate research fellow in astronomy at Columbia University.
-My advisor is [Melissa Ness](http://user.astro.columbia.edu/~mkness/Home.html).
+I'm a postdoc at Ohio State University (formerly a grad student at Columbia University, where my advisor was [Melissa Ness](http://user.astro.columbia.edu/~mkness/Home.html).
 I'm interested in spectroscopy, stars, Galactic archaeology, and data analysis.
 
 [ADS](https://ui.adsabs.harvard.edu/search/q=orcid%3A0000-0001-7339-5136&sort=date%20desc%2C%20bibcode%20desc) | 
@@ -13,4 +12,4 @@ I'm interested in spectroscopy, stars, Galactic archaeology, and data analysis.
 [github](https://github.com/ajwheeler/) |
 [math/physics notes](mathnotes.html)
 
-Get in touch: `a.wheeler@columbia.edu`
+Get in touch: `wheeler.883@osu.edu`
