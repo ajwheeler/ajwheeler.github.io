@@ -1,0 +1,97 @@
+body {
+  font: 16px Arial;
+}
+#page {
+    width: 330px;
+    position: relative;
+    margin-left: -165px;
+    margin-right: -165px;
+    top: 50%;
+    left: 50%; 
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+.input {
+  border: 2px solid #f1f1f1;
+  padding: 5px;
+  font-size: 16px;
+}
+button {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+#button-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button:hover {
+    background-color: rgb(23, 113, 202); 
+    color: white;
+}
+button:disabled,
+button[disabled]{
+  background-color: #7f7f7f;
+}
+.autocomplete-items {
+  position: absolute;
+  border: 2px solid #f1f1f1;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+#game {
+    display: grid;
+    gap: 0.3em;
+    grid-template-columns: 230px 100px;
+}
+.guess-row {
+    background-color: #f1f1f1;
+    padding: 5px;
+    font-size: 16px;
+}
+.guess-status {
+    vertical-align: middle;
+    background-color: #f1f1f1;
+    padding: 5px;
+    text-align: center;
+}
+.correct {
+    background-color: #b1d8b8;
+}
+#errbox {
+    color: red;
+    font-style: italic;
+    height: 1em;
+}
+#display {
+    width: 330px;
+    max-height: 400px;
+}
+img {
+    max-width: 100%; /* or any custom size */
+    max-height: 100%; 
+    object-fit: contain;
+}
