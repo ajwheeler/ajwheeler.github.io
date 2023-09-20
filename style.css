@@ -1,13 +1,9 @@
 body {
   font: 16px Arial;
-}
-#page {
-    width: 330px;
-    position: relative;
-    margin-left: -165px;
-    margin-right: -165px;
-    top: 50%;
-    left: 50%; 
+  width: 90%;
+  max-width: 600px;
+  /* center horizontally */
+  margin: 0 auto;
 }
 .autocomplete {
   /*the container must be positioned relative:*/
@@ -65,7 +61,7 @@ button[disabled]{
 #game {
     display: grid;
     gap: 0.3em;
-    grid-template-columns: 230px 100px;
+    grid-template-columns: 2fr 1fr;
 }
 .guess-row {
     background-color: #f1f1f1;
@@ -86,12 +82,11 @@ button[disabled]{
     font-style: italic;
     height: 1em;
 }
-#display {
-    width: 330px;
-    max-height: 400px;
-}
 img {
-    max-width: 100%; /* or any custom size */
-    max-height: 100%; 
+    display: block;
+    max-height: 50%;
+    max-width: 100%;
+    /* center horizontally */
+    margin: auto auto;
     object-fit: contain;
 }
