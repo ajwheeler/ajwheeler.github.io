@@ -325,7 +325,7 @@ function distance(xy1, xy2) {
     } else if (5*Math.PI/8 < angle && angle < 7*Math.PI/8) {
         dir = "↖️"
     } else if (7*Math.PI/8 < angle && angle < 9*Math.PI/8) {
-        dir = "️←"
+        dir = "️⬅️"
     } else if (9*Math.PI/8 < angle && angle < 11*Math.PI/8) {
         dir = "↙️"
     } else if (11*Math.PI/8 < angle || angle < -3*Math.PI/8) {
@@ -374,7 +374,7 @@ function handle_guess() {
             statbox.innerHTML = "🧐"
         } else {
             // display the distance and direction
-            const [dist, dir] = distance(centroid_coords[guess], centroid_coords[the_answer])
+            const [dist, dir] = distance(centroid_coords[the_answer], centroid_coords[guess])
             statbox.innerHTML = dist + " miles " + dir
 
             // if they got it wrong on the last guess, display the correct answer
@@ -392,8 +392,6 @@ function randomCounty(seed) {
     r = Math.floor(r * countyNames.length)
     return countyNames[r % countyNames.length]
 } 
-
-
 
 n_guesses = 6
 
