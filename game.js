@@ -305,12 +305,14 @@ function distance(xy1, xy2) {
     dx = xy1[0] - xy2[0]
     dy = xy1[1] - xy2[1]
 
+    console.log("dx:", dx, "dy:", dy)
+
     d = Math.sqrt(dx*dx + dy*dy)
-    angle = Math.tan(dx/dy)
+    angle = Math.atan(dy/dx)
 
     //convert angle to arrow emoji
     if (-Math.PI/4 < angle < Math.PI/4) {
-        angle = "️➡️"
+        angle = "➡️"
     } else if (Math.PI/4 < angle < 3*Math.PI/4) {
         angle = "↗️"
     } else if (3*Math.PI/4 < angle < 5*Math.PI/4) {
@@ -323,6 +325,8 @@ function distance(xy1, xy2) {
         angle = "↙️"
     } else if (-3*Math.PI/4 < angle < -Math.PI/4) {
         angle = "⬇️"
+    } else {
+        angle = "↘️"
     }
 
     return [Math.round(d), angle]
@@ -352,7 +356,6 @@ function handle_guess() {
         past_guesses.push(guess)
         guessRow = document.getElementsByClassName("guess-row")[which_guess - 1]
         guessRow.innerHTML = guess 
-
         
         if (which_guess == n_guesses) {
             dissable_input()
@@ -366,12 +369,25 @@ function handle_guess() {
             statbox.innerHTML = "🧐"
         } else {
             // display the distance and direction
-            const [dist, dir] = distance(centroid_coords[the_answer], centroid_coords[guess])
+            const [dist, dir] = distance(centroid_coords[guess], centroid_coords[the_answer])
             statbox.innerHTML = dist + " miles " + dir
+
+            // if they got it wrong on the last guess, display the correct answer
+            if (which_guess == n_guesses) {
+                errbox.innerHTML = "It's " + the_answer + " County 🤷‍♀️"
+            }
         }
         which_guess += 1
     }
 }
+
+function randomCounty(seed) {
+    var x = Math.sin(seed++) * 10000;
+    r = x - Math.floor(x);
+    r = Math.floor(r * countyNames.length)
+    return countyNames[r % countyNames.length]
+} 
+
 
 
 n_guesses = 6
@@ -397,7 +413,10 @@ document.getElementById("guess-button").addEventListener("click", handle_guess)
 
 document.getElementById("county_field").focus()
 
-the_answer = countyNames[Math.floor(Math.random() * countyNames.length)]
+// get today's date as an integer
+today = new Date()
+// random county based on today's date
+the_answer = randomCounty(today.getDate() + today.getMonth() * 31 + today.getFullYear() * 365)
 console.log("The answer is", the_answer)
 
 img = document.createElement("img")
