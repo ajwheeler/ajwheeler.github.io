@@ -305,31 +305,36 @@ function distance(xy1, xy2) {
     dx = xy1[0] - xy2[0]
     dy = xy1[1] - xy2[1]
 
-    console.log("dx:", dx, "dy:", dy)
-
     d = Math.sqrt(dx*dx + dy*dy)
-    angle = Math.atan(dy/dx)
 
-    //convert angle to arrow emoji
-    if (-Math.PI/4 < angle < Math.PI/4) {
-        angle = "➡️"
-    } else if (Math.PI/4 < angle < 3*Math.PI/4) {
-        angle = "↗️"
-    } else if (3*Math.PI/4 < angle < 5*Math.PI/4) {
-        angle = "⬆️"
-    } else if (5*Math.PI/4 < angle < 7*Math.PI/4) {
-        angle = "↖️"
-    } else if (7*Math.PI/4 < angle < 2*Math.PI || -7*Math.PI/4 < angle < -2*Math.PI) {
-        angle = "️←"
-    } else if (-5*Math.PI/4 < angle < -3*Math.PI/4) {
-        angle = "↙️"
-    } else if (-3*Math.PI/4 < angle < -Math.PI/4) {
-        angle = "⬇️"
-    } else {
-        angle = "↘️"
+    angle = Math.atan(dy/dx)
+    //correct to cover the whole unit circle
+    if (dx < 0) {
+        angle += Math.PI
     }
 
-    return [Math.round(d), angle]
+    if (-Math.PI/8 < angle && angle < Math.PI/8) {
+        dir = "➡️"
+    } else if (Math.PI/8 < angle && angle < 3*Math.PI/8) {
+        console.log((Math.PI/8 < angle && angle < 3*Math.PI/8))
+        console.log(Math.PI/8, " ", angle, " ", 3*Math.PI/8)
+        console.log("?")
+        dir = "↗️"
+    } else if (3*Math.PI/8 < angle && angle < 5*Math.PI/8) {
+        dir = "⬆️"
+    } else if (5*Math.PI/8 < angle && angle < 7*Math.PI/8) {
+        dir = "↖️"
+    } else if (7*Math.PI/8 < angle && angle < 9*Math.PI/8) {
+        dir = "️←"
+    } else if (9*Math.PI/8 < angle && angle < 11*Math.PI/8) {
+        dir = "↙️"
+    } else if (11*Math.PI/8 < angle || angle < -3*Math.PI/8) {
+        dir = "⬇️"
+    } else {
+        dir = "↘️"
+    }
+
+    return [Math.round(d), dir]
 }
 
 which_guess = 1
