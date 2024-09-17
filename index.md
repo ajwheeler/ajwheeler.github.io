@@ -13,4 +13,4 @@ My central research interest is stellar spectroscopy and related data analysis p
 [github](https://github.com/ajwheeler/) |
 [math/physics notes](mathnotes.html)
 
-Get in touch: `adamwhlr@gmail.com`.
+Get in touch: `awheeler@flatironinstitute.org`.
