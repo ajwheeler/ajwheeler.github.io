@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Adam Wheeler</title>
+    <style type="text/css">
+        body {
+            margin: 40px auto;
+            max-width: 650px;
+            line-height: 1.4;
+            font-size: 18px;
+            padding: 0 10px
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2
+        }
+    </style>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+        type="text/javascript"></script>
+</head>
+<h1>Adam Wheeler</h1>
+<a href="https://ui.adsabs.harvard.edu/search/q=orcid%3A0000-0001-7339-5136&sort=date%20desc%2C%20bibcode%20desc">
+    ADS
+</a> |
+<a href="https://arxiv.org/a/0000-0001-7339-5136.html">arXiv</a> |
+<a href="https://github.com/ajwheeler/">github</a> |
+<a href="/mathnotes">math notes</a> |
+<a href="/blog">blog</a>
+
+
+<body>
+    
+<h1 id="math-and-physics-notes">Math and physics notes</h1>
+<h2 id="matrix-identities">matrix identities</h2>
+<ul>
+<li>\((ABC\dots)^{-1} = C^{-1} B^{-1} A^{-1}\).</li>
+<li>\((ABC\dots)^T = C^T B^T A^T\).</li>
+<li>\(\vert c A \vert = c^n \vert A\vert\) where A is \( n \times n \).</li>
+</ul>
+<h2 id="linear-regression">linear regression</h2>
+<p>The <strong>Moorse-Penrose pseudoinverse</strong> for orthogonal real matrices is</p>
+<p>\( A^+ = (A^T A)^{-1} A^T \)</p>
+<p>The <strong>normal equation</strong> is</p>
+<p>\(\widehat\beta = (X^T \Sigma^{-1} X)^{-1} X^T \Sigma^{-1} y\)</p>
+<p>And the standard error on \(\widehat\beta\) is</p>
+<p>\( \Sigma_{\widehat\beta} = (X^T \Sigma^{-1} X)^{-1} \)</p>
+<p>For “standard” linear regression, the design matrix \(X\) has rows of the form \(\left[1~x_i\right]\),</p>
+<p>\(
+\sigma_{\beta_1} = \sigma \sqrt{ \frac{1}{n} + \frac{\bar{x}^2}{\sum_{i=1}^n (x_i - \bar{x})^2} }, \quad
+\sigma_{\beta_2} = \sigma (\sum_{i=1}^n (x_i - \bar{x})^2)^{-\frac{1}{2}}
+\)</p>
+<p><a href="https://en.wikipedia.org/wiki/Projection_matrix">The <strong>hat matrix</strong></a> is given by</p>
+<p>\( X (X^T \Sigma^{-1} X)^{-1} X^T \Sigma^{-1} \)</p>
+<h2 id="matrix-decompositions">matrix decompositions</h2>
+<p><strong>Singular Value decomposition</strong>: \(A = U D V^T\) where</p>
+<ul>
+<li>The columns of \(U\) are the eigenvectors of \(A A^T\)</li>
+<li>\(D\) is a diagonal matrix containting hte eigenvalues of \(A A^T\) (the singular values)</li>
+<li>\(V\) is the matrix whose columns are the eigenvectors of \(A^T A\)</li>
+</ul>
+<p><strong>LU decomposition</strong>: \(A = LU\) where</p>
+<ul>
+<li>\(L\) is lower-triangular</li>
+<li>\(U\) is upper-triangular</li>
+</ul>
+<h2 id="the-normal-distribution">The Normal distribution</h2>
+<p>$$\mathcal{N}(\mathbf{x} | \mathbf{\mu}, \Sigma) =  \exp\left( - \frac{1}{2} \mathbf{r}^T \Sigma^{-1} \mathbf{r} \right) , |2 \pi \Sigma|^{-\frac{1}{2}}$$</p>
+<p>where \(\mathbf{r} = \mathbf{x} - \mathbf{\mu}\). Note that the \(2 \pi\) is <em>inside</em> the determinant.</p>
+<p><strong>linear operations on Gaussian random variables</strong>: If \( x \sim \mathcal{N}(\mu_x, \Sigma_X)\), and \(y \sim \mathcal{N}(\mu_y, \Sigma_y)\), then</p>
+<ul>
+<li>\(x + y \sim \mathcal{N}(\mu_x + \mu_y, \Sigma_x + \Sigma_y) \).</li>
+<li>\(Ax \sim \mathcal{N}(A \mu_x, A \Sigma_x A^T)\).</li>
+</ul>
+<p><strong>Product of Gaussian PDFs:</strong>
+\(\mathcal{N}(\mathbf{x} \vert \alpha, \Sigma) \mathcal{N}(\mathbf{x} \vert \beta, \Omega) = \eta \mathcal{N}(\mathbf{x} | \mathbf{m}, C)\), where</p>
+<ul>
+<li>\( \mathbf{m} = (\Sigma^{-1} + \Omega^{-1})^{-1} (\Sigma^{-1} \alpha + \Omega^{-1} \beta) \).</li>
+<li>\( C = (\Sigma^{-1} + \Omega^{-1})^{-1}\).</li>
+<li>\( \eta = \mathcal{N}(\alpha-\beta \vert 0, \Sigma + \Omega) \).</li>
+</ul>
+<p><strong>Refactoring the product of heirarchical Gaussian PDFs</strong>:
+\(\mathcal{N}(\mathbf{x} \vert M \theta, C) \mathcal{N}(\theta \vert \mu, \Lambda) = \mathcal{N}(\theta \vert \mathbf{a}, A) \mathcal{N}(\mathrm{x} \vert \mathrm{b}, B)\), where</p>
+<ul>
+<li>\(A^{-1} = \Lambda^{-1} + M^T C^{-1} M\).</li>
+<li>\( a = A(\Lambda^{-1} \mu + M^T C^{-1} \mathbf{x})\).</li>
+<li>\(B = C + M^T \Lambda M\).</li>
+<li>\(b = M \mu\).</li>
+</ul>
+<hr />
+<p>Sources: <a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf">The Matrix Cookbook</a>, <a href="https://ui.adsabs.harvard.edu/link_gateway/2020arXiv200514199H/doi:10.48550/arXiv.2005.14199">Hogg+ 2020</a></p>
+
+
+</body>
+
+</html>
