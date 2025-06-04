@@ -20,7 +20,18 @@ The **normal equation** is
 
 \\(\widehat\beta = (X^T \Sigma^{-1} X)^{-1} X^T \Sigma^{-1} y\\)
 
-The **hat matrix** is given by
+And the standard error on \\(\widehat\beta\\) is
+
+\\( \Sigma_{\widehat\beta} = (X^T \Sigma^{-1} X)^{-1} \\)
+
+For "standard" linear regression, the design matrix \\(X\\) has rows of the form \\(\left[1~x_i\right]\\),
+
+\\(
+    \sigma_{\beta_1} = \sigma \sqrt{ \frac{1}{n} + \frac{\bar{x}^2}{\sum_{i=1}^n (x_i - \bar{x})^2} }, \quad
+    \sigma_{\beta_2} = \sigma (\sum_{i=1}^n (x_i - \bar{x})^2)^{-\frac{1}{2}}
+\\)
+
+[The **hat matrix**](https://en.wikipedia.org/wiki/Projection_matrix) is given by
 
 \\( X (X^T \Sigma^{-1} X)^{-1} X^T \Sigma^{-1} \\)
 
